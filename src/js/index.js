@@ -78,7 +78,7 @@ const resetGallery = function () {
 };
 
 const isLoadMoreavailible = function (totalHits) {
-  availiblePages = Math.round(totalHits / 40);
+  const availiblePages = Math.round(totalHits / 40);
   console.log('page#', searchParams.page, 'availible Pages', availiblePages);
   if (searchParams.page < availiblePages) {
     loadMoreBtn.classList.remove('is-hidden');
