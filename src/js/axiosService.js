@@ -16,7 +16,6 @@ export const searchParams = {
 
 export const getImages = async searchQ => {
   searchParams.q = searchQ;
-  console.log('search', searchParams.q);
   searchParams.page = 1;
   const { data } = await axios.get(
     `/api/?${querystring.stringify(searchParams)}`
@@ -26,10 +25,8 @@ export const getImages = async searchQ => {
 
 export const getMoreImages = async () => {
   searchParams.page += 1;
-  console.log(searchParams.page);
   const { data } = await axios.get(
     `/api/?${querystring.stringify(searchParams)}`
   );
-  console.log(data);
   return data;
 };

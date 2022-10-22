@@ -48,9 +48,6 @@ async function searchImages(searchQ) {
     const data = await getImages(searchQ);
 
     if (data.hits.length === 0) {
-      console.log(
-        'Sorry, there are no images matching your search query. Please try again.'
-      );
       Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
@@ -59,7 +56,6 @@ async function searchImages(searchQ) {
       return;
     }
     const markup = await createGalleryMarkup(data);
-    console.log(data);
     Notify.success(`Hooray! We found ${data.totalHits} images.`);
     gallery.innerHTML = markup;
     lightbox.refresh();
@@ -83,7 +79,6 @@ const isLoadMoreavailible = function (totalHits) {
   if (searchParams.page < availiblePages) {
     loadMoreBtn.classList.remove('is-hidden');
   } else if (totalHits > 40) {
-    console.log("We're sorry, but you've reached the end of search results.");
     Notify.info("We're sorry, but you've reached the end of search results.");
   }
 };
